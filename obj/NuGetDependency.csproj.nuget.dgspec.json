@@ -1,0 +1,96 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jimle\\source\\repos\\NuGetDependency\\NuGetDependency.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jimle\\source\\repos\\NuGetDependency\\NuGetDependency.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jimle\\source\\repos\\NuGetDependency\\NuGetDependency.csproj",
+        "projectName": "NuGetDependency",
+        "projectPath": "C:\\Users\\jimle\\source\\repos\\NuGetDependency\\NuGetDependency.csproj",
+        "packagesPath": "C:\\Users\\jimle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jimle\\source\\repos\\NuGetDependency\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jimle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\jimle\\source\\repos\\plugins": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "NuGet.Configuration": {
+              "target": "Package",
+              "version": "[6.13.2, )"
+            },
+            "NuGet.Frameworks": {
+              "target": "Package",
+              "version": "[6.13.2, )"
+            },
+            "NuGet.PackageManagement": {
+              "target": "Package",
+              "version": "[6.13.2, )"
+            },
+            "NuGet.Protocol": {
+              "target": "Package",
+              "version": "[6.13.2, )"
+            },
+            "NuGet.Resolver": {
+              "target": "Package",
+              "version": "[6.13.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

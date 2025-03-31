@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JointLengthSequencing</name>
+    </assembly>
+    <members>
+        <member name="T:JointLengthSequencing.Config">
+            <summary>
+            Configuration class for defining data contracts.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.Config.GetConfig">
+            <summary>
+            Returns the configuration data as a JSON string.
+            This configuration consists of a base run and a target run, as well as parameters for the algorithm.
+            </summary>
+            <returns>The configuration data as a JSON string.</returns>
+        </member>
+        <member name="T:JointLengthSequencing.DataContracts.AlignmentDataRequest">
+            <summary>
+            Represents a request for alignment data, containing the necessary parameters and datasets.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.DataContracts.AlignmentDataRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:JointLengthSequencing.DataContracts.AlignmentDataRequest"/> struct with default values.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.BaseData">
+            <summary>
+            Gets or sets the base data, a list of dictionaries representing the dataset.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.TargetData">
+            <summary>
+            Gets or sets the target data, a list of dictionaries representing the dataset.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.PivotPercentile">
+            <summary>
+            Gets or sets the pivot percentile value used for pivot selection.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.Tolerance">
+            <summary>
+            Gets or sets the tolerance value for alignment calculations.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.PivotRequired">
+            <summary>
+            Gets or sets the number of pivots required for alignment.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.BaseLengthCol">
+            <summary>
+            Gets or sets the column name for lengths in the base data.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.DataContracts.AlignmentDataRequest.TargetLengthCol">
+            <summary>
+            Gets or sets the column name for lengths in the target data.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.DataContracts.AlignmentDataRequest.Validate(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Validates the alignment data request to ensure all required properties are set and values are within acceptable ranges.
+            </summary>
+            <param name="errors">A list to store the error messages. Can be null.</param>
+            <returns>True if the request is valid; otherwise, false.</returns>
+        </member>
+        <member name="T:JointLengthSequencing.EndpointDefinitions.JointLengthEndpointDefinition">
+            <summary>
+            The joint length endpoint definition.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.EndpointDefinitions.JointLengthEndpointDefinition.DefineEndpoints(Microsoft.AspNetCore.Builder.WebApplication,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Defines the endpoints.
+            </summary>
+            <param name="app">The app.</param>
+            <param name="env">The environment.</param>
+        </member>
+        <member name="M:JointLengthSequencing.EndpointDefinitions.JointLengthEndpointDefinition.DefineServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures the necessary services for joint length sequencing.
+            </summary>
+            <param name="services">The service collection to which the services are added.</param>
+        </member>
+        <member name="M:JointLengthSequencing.EndpointDefinitions.JointLengthEndpointDefinition.AlignAsync(Microsoft.AspNetCore.Mvc.ApiVersion,System.IServiceProvider,JointLengthSequencing.DataContracts.AlignmentDataRequest)">
+            <summary>
+            Aligns two datasets using the joint length sequencing algorithm.
+            </summary>
+            <param name="version">The version.</param>
+            <param name="serviceProvider">The service provider.</param>
+            <param name="alignmentData">The alignment data.</param>
+            <returns>A Task of type IResult</returns>
+        </member>
+        <member name="T:JointLengthSequencing.EndpointDefinitions.SwaggerEndpointDefinition">
+            <summary>
+            The swagger endpoint definition.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.EndpointDefinitions.SwaggerEndpointDefinition.DefineEndpoints(Microsoft.AspNetCore.Builder.WebApplication,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Defines the endpoints.
+            </summary>
+            <param name="app">The app.</param>
+            <param name="env">The environment.</param>
+        </member>
+        <member name="M:JointLengthSequencing.EndpointDefinitions.SwaggerEndpointDefinition.DefineServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Defines the services.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="T:JointLengthSequencing.StringExtensions">
+            <summary>
+            The string extensions.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.StringExtensions.EqualsIgnoreCase(System.String,System.Object)">
+            <summary>
+            Equals ignore case.
+            </summary>
+            <param name="str1">The str1.</param>
+            <param name="str2">The str2.</param>
+            <returns>A bool</returns>
+        </member>
+        <member name="T:JointLengthSequencing.Models.Cell">
+            <summary>
+            Represents a cell with a score, quality, and direction.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:JointLengthSequencing.Models.Cell"/> struct.
+            </remarks>
+            <param name="score">The score of the cell.</param>
+            <param name="quality">The quality of the cell.</param>
+            <param name="direction">The direction of the cell.</param>
+        </member>
+        <member name="M:JointLengthSequencing.Models.Cell.#ctor(System.Int32,System.Double,System.Int32)">
+            <summary>
+            Represents a cell with a score, quality, and direction.
+            </summary>
+            <remarks>
+            Initializes a new instance of the <see cref="T:JointLengthSequencing.Models.Cell"/> struct.
+            </remarks>
+            <param name="score">The score of the cell.</param>
+            <param name="quality">The quality of the cell.</param>
+            <param name="direction">The direction of the cell.</param>
+        </member>
+        <member name="P:JointLengthSequencing.Models.Cell.Score">
+            <summary>
+            Gets the score of the cell.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.Models.Cell.Quality">
+            <summary>
+            Gets the quality of the cell.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.Models.Cell.Direction">
+            <summary>
+            Gets the direction of the cell.
+            </summary>
+        </member>
+        <member name="T:JointLengthSequencing.Models.Joint">
+            <summary>
+            Represents a joint in a skeleton, including its original index in the dataset and its length.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.Models.Joint.OriginalIndex">
+            <summary>
+            Gets or sets the original index of the joint in the dataset.
+            </summary>
+            <value>The original index.</value>
+        </member>
+        <member name="P:JointLengthSequencing.Models.Joint.Length">
+            <summary>
+            Gets or sets the length of the joint.
+            </summary>
+            <value>The length.</value>
+        </member>
+        <member name="T:JointLengthSequencing.Models.JointMatchResult">
+            <summary>
+            Represents a single match result between a joint in the base dataset
+            and a joint in the target dataset.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.Models.JointMatchResult.BaseIndex">
+            <summary>
+            The index of the joint in the base dataset.
+            </summary>
+        </member>
+        <member name="P:JointLengthSequencing.Models.JointMatchResult.TargetIndex">
+            <summary>
+            The index of the joint in the target dataset.
+            </summary>
+        </member>
+        <member name="T:JointLengthSequencing.Services.IJointLengthSequencer">
+            <summary>
+            Defines the contract for a service that sequences two datasets
+            of joints based on their lengths.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.Services.IJointLengthSequencer.CalculateMatches(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Double,System.Double,System.Int32,System.String,System.String)">
+            <summary>
+            Calculates a list of matches between two datasets of joints
+            based on their lengths.
+            </summary>
+            <param name="baseData">The first dataset of joints.</param>
+            <param name="targetData">The second dataset of joints.</param>
+            <param name="pivotPercentile">
+            The percentage of joints to consider as pivots.
+            </param>
+            <param name="tolerance">
+            The maximum difference in length that is allowed for two
+            joints to be considered a match.
+            </param>
+            <param name="pivotRequired">
+            The minimum number of pivot joints that must match for the
+            two datasets to be considered a match.
+            </param>
+            <param name="baseLengthCol">
+            The name of the column containing the lengths of the joints in
+            the first dataset.
+            </param>
+            <param name="targetLengthCol">
+            The name of the column containing the lengths of the joints in
+            the second dataset.
+            </param>
+            <returns>A list of matches between the two datasets.</returns>
+        </member>
+        <member name="T:JointLengthSequencing.Services.JointLengthSequencer">
+            <summary>
+            A service that implements the sequencing of two datasets of joints based on their lengths.
+            </summary>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.CalculateMatches(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Double,System.Double,System.Int32,System.String,System.String)">
+            <summary>
+            Calculates a list of joint match results by aligning two datasets of joints based on their lengths.
+            </summary>
+            <param name="baseData">The base dataset of joints.</param>
+            <param name="targetData">The target dataset of joints.</param>
+            <param name="pivotPercentile">The percentile for selecting pivot joints. Defaults to 0.1.</param>
+            <param name="tolerance">The tolerance for aligning pivot joints. Defaults to 1.5.</param>
+            <param name="pivotRequired">The minimum number of pivot joints required for alignment. Defaults to 10.</param>
+            <param name="baseLengthCol">The column name for the length of each joint in the base dataset. Defaults to "length".</param>
+            <param name="targetLengthCol">The column name for the length of each joint in the target dataset. Defaults to "length".</param>
+            <returns>A list of joint match results, where each result contains the index of the corresponding joint in the base dataset and the target dataset.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.ProcessDataset(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String)">
+            <summary>
+            Processes the dataset by extracting the relevant column and creating a list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects.
+            </summary>
+            <param name="data">The dataset.</param>
+            <param name="lengthColumn">The column name for the length values.</param>
+            <returns>A list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.SelectPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Int32,System.Double)">
+            <summary>
+            Selects the pivot joints from the sorted joints list by taking the top percentile of joints and then
+            filtering out joints that are not separated by a certain tolerance.
+            </summary>
+            <param name="sortedJoints">The sorted list of joints.</param>
+            <param name="percentile">The percentile of joints to take as candidates. Defaults to 0.1.</param>
+            <param name="required">The minimum number of pivot joints required. Defaults to 10.</param>
+            <param name="tolerance">The tolerance for separating pivot joints. Defaults to 1.5.</param>
+            <returns>A list of pivot joints, or <c>null</c> if the required number of pivot joints is not met.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.AlignPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Aligns two lists of pivot joints by finding the longest contiguous subsequence of matching joints
+            (i.e., joints with lengths that differ by no more than a given tolerance).
+            </summary>
+            <param name="basePivots">The list of pivot joints for the base dataset.</param>
+            <param name="targetPivots">The list of pivot joints for the target dataset.</param>
+            <param name="tolerance">The tolerance for determining whether two joints are matching.</param>
+            <returns>A list of tuples, where each tuple contains a pivot joint from the base dataset and
+            a pivot joint from the target dataset that form a matching pair.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.GetSegmentBetween(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Double)">
+            <summary>
+            Returns the segment of joints between the given start and end indices (inclusive).
+            </summary>
+            <param name="joints">The list of joints to slice.</param>
+            <param name="startLength">The starting length of the slice.</param>
+            <param name="endLength">The ending length of the slice.</param>
+            <returns>The segment of joints between the given start and end indices.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer.AlignSegments(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Aligns two segments of joints using dynamic programming.
+            </summary>
+            <param name="baseSegment">The base segment of joints.</param>
+            <param name="targetSegment">The target segment of joints.</param>
+            <param name="tolerance">The tolerance for aligning joints.</param>
+            <returns>The list of aligned joints.</returns>
+        </member>
+        <member name="T:JointLengthSequencing.Services.JointLengthSequencer2">
+            <summary>
+            A service that implements the sequencing of two datasets of joints based on their lengths.
+            </summary>
+            <remarks>
+            Optimized
+            </remarks>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.CalculateMatches(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Double,System.Double,System.Int32,System.String,System.String)">
+            <summary>
+            Calculates a list of joint match results by aligning two datasets of joints based on their lengths.
+            </summary>
+            <param name="baseData">The base dataset of joints.</param>
+            <param name="targetData">The target dataset of joints.</param>
+            <param name="pivotPercentile">The percentile for selecting pivot joints. Defaults to 0.1.</param>
+            <param name="tolerance">The tolerance for aligning pivot joints. Defaults to 1.5.</param>
+            <param name="pivotRequired">The minimum number of pivot joints required for alignment. Defaults to 10.</param>
+            <param name="baseLengthCol">The column name for the length of each joint in the base dataset. Defaults to "length".</param>
+            <param name="targetLengthCol">The column name for the length of each joint in the target dataset. Defaults to "length".</param>
+            <returns>A list of joint match results, where each result contains the index of the corresponding joint in the base dataset and the target dataset.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.ProcessDataset(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String)">
+            <summary>
+            Processes the dataset by extracting the length values from the specified column and creates a sorted list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects.
+            </summary>
+            <param name="data">The dataset represented as a list of dictionaries, where each dictionary corresponds to a joint and contains its attributes.</param>
+            <param name="lengthColumn">The name of the column containing the length values for each joint.</param>
+            <returns>A sorted list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects based on their lengths.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.SelectPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Int32,System.Double)">
+            <summary>
+            Selects the pivot joints from the sorted joints list by taking the top percentile of joints and then
+            filtering out joints that are not separated by a certain tolerance.
+            </summary>
+            <param name="sortedJoints">The sorted list of joints.</param>
+            <param name="percentile">The percentile of joints to take as candidates. Defaults to 0.1.</param>
+            <param name="required">The minimum number of pivot joints required. Defaults to 10.</param>
+            <param name="tolerance">The tolerance for separating pivot joints. Defaults to 1.5.</param>
+            <returns>A list of pivot joints, or <c>null</c> if the required number of pivot joints is not met.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.FindFirstIndexGreaterOrEqual(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Int32,System.Double)">
+            <summary>
+            Finds the first index in the list of joints where the joint length is greater than or equal to the specified target length.
+            </summary>
+            <param name="joints">The list of joints to search through.</param>
+            <param name="startIndex">The starting index for the search.</param>
+            <param name="targetLength">The target length to compare against.</param>
+            <returns>The index of the first joint with a length greater than or equal to the target length, or the count of joints if no such joint is found.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.AlignPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Aligns two lists of pivot joints by finding the longest contiguous subsequence of matching joints
+            (i.e., joints with lengths that differ by no more than a given tolerance).
+            </summary>
+            <param name="basePivots">The list of pivot joints for the base dataset.</param>
+            <param name="targetPivots">The list of pivot joints for the target dataset.</param>
+            <param name="tolerance">The tolerance for determining whether two joints are matching.</param>
+            <returns>A list of tuples, where each tuple contains a pivot joint from the base dataset and
+            a pivot joint from the target dataset that form a matching pair.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.GetSegmentBetween(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Double)">
+            <summary>
+            Retrieves a sublist of joints from a sorted list where each joint's length is between the specified start and end lengths (exclusive).
+            </summary>
+            <param name="joints">The sorted list of joints to search within.</param>
+            <param name="startLength">The lower bound length for the joints to be included.</param>
+            <param name="endLength">The upper bound length for the joints to be included.</param>
+            <returns>A list of joints whose lengths are within the specified range, or an empty list if no such joints exist.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.FindFirstIndexGreaterThan(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Finds the first index in the sorted list of joints whose length is greater than the target value.
+            </summary>
+            <param name="joints">The sorted list of joints.</param>
+            <param name="target">The target value.</param>
+            <returns>The first index greater than the target value, or the count of joints if no such index is found.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.FindLastIndexLessThan(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Finds the last index in the sorted list of joints whose length is less than the target value.
+            </summary>
+            <param name="joints">The sorted list of joints.</param>
+            <param name="target">The target value.</param>
+            <returns>The last index less than the target value, or -1 if no such index is found.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer2.AlignSegments(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Aligns two segments of joints using dynamic programming.
+            </summary>
+            <param name="baseSegment">The base segment of joints.</param>
+            <param name="targetSegment">The target segment of joints.</param>
+            <param name="tolerance">The tolerance for aligning joints.</param>
+            <returns>The list of aligned joints.</returns>
+        </member>
+        <member name="T:JointLengthSequencing.Services.JointLengthSequencer3">
+            <summary>
+            A service that implements the sequencing of two datasets of joints based on their lengths using dynamic programming.
+            </summary>
+            <remarks>
+            Improved performance on optimized.
+            </remarks>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.CalculateMatches(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Double,System.Double,System.Int32,System.String,System.String)">
+            <summary>
+            Calculates a list of joint match results by aligning two datasets of joints based on their lengths.
+            </summary>
+            <param name="baseData">The base dataset of joints.</param>
+            <param name="targetData">The target dataset of joints.</param>
+            <param name="pivotPercentile">The percentile for selecting pivot joints. Defaults to 0.1.</param>
+            <param name="tolerance">The tolerance for aligning pivot joints. Defaults to 1.5.</param>
+            <param name="pivotRequired">The minimum number of pivot joints required for alignment. Defaults to 10.</param>
+            <param name="baseLengthCol">The column name for the length of each joint in the base dataset. Defaults to "length".</param>
+            <param name="targetLengthCol">The column name for the length of each joint in the target dataset. Defaults to "length".</param>
+            <returns>A list of joint match results, where each result contains the index of the corresponding joint in the base dataset and the target dataset.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.ProcessDataset(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Object}},System.String)">
+            <summary>
+            Processes the dataset by extracting the relevant column and creating a list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects.
+            </summary>
+            <param name="data">The dataset.</param>
+            <param name="lengthColumn">The column name for the length values.</param>
+            <returns>A list of <see cref="T:JointLengthSequencing.Models.Joint"/> objects sorted by their lengths.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.SelectPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Int32,System.Double)">
+            <summary>
+            Selects the pivot joints from the sorted joints list by taking the top percentile of joints and then
+            filtering out joints that are not separated by a certain tolerance.
+            </summary>
+            <param name="sortedJoints">The sorted list of joints.</param>
+            <param name="percentile">The percentile of joints to take as candidates. Defaults to 0.1.</param>
+            <param name="required">The minimum number of pivot joints required. Defaults to 10.</param>
+            <param name="tolerance">The tolerance for separating pivot joints. Defaults to 1.5.</param>
+            <returns>A list of pivot joints, or <c>null</c> if the required number of pivot joints is not met.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.AlignPivots(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double)">
+            <summary>
+            Aligns two lists of pivot joints by finding the longest contiguous subsequence of matching joints
+            (i.e., joints with lengths that differ by no more than a given tolerance).
+            </summary>
+            <param name="basePivots">The list of pivot joints for the base dataset.</param>
+            <param name="targetPivots">The list of pivot joints for the target dataset.</param>
+            <param name="tolerance">The tolerance for determining whether two joints are matching.</param>
+            <returns>A list of tuples, where each tuple contains a pivot joint from the base dataset and
+            a pivot joint from the target dataset that form a matching pair.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.GetSegmentIndices(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Double,System.Double)">
+            <summary>
+            Finds the start and end indices for a segment of joints whose lengths lie between the given start and end lengths.
+            </summary>
+            <param name="joints">The list of joints to search within.</param>
+            <param name="startLength">The lower bound length for the joints to be included.</param>
+            <param name="endLength">The upper bound length for the joints to be included.</param>
+            <returns>A tuple containing the start and end indices of the segment, inclusive.</returns>
+        </member>
+        <member name="M:JointLengthSequencing.Services.JointLengthSequencer3.AlignSegments(System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Int32,System.Int32,System.Collections.Generic.List{JointLengthSequencing.Models.Joint},System.Int32,System.Int32,System.Double)">
+            <summary>
+            Aligns two segments of joints using dynamic programming.
+            </summary>
+            <param name="baseJoints">The base segment of joints.</param>
+            <param name="baseStart">The starting index of the base segment.</param>
+            <param name="baseEnd">The ending index of the base segment.</param>
+            <param name="targetJoints">The target segment of joints.</param>
+            <param name="targetStart">The starting index of the target segment.</param>
+            <param name="targetEnd">The ending index of the target segment.</param>
+            <param name="tolerance">The tolerance for aligning joints.</param>
+            <returns>The list of aligned joints.</returns>
+        </member>
+    </members>
+</doc>

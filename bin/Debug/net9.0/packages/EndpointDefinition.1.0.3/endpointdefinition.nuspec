@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EndpointDefinition</id>
+    <version>1.0.3</version>
+    <authors>Li Wei</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/jimleeii/EndpointDefinition</projectUrl>
+    <description>A library for defining and registering API endpoints in ASP.NET Core applications</description>
+    <tags>aspnetcore endpoints api minimal-api</tags>
+    <repository type="git" url="https://github.com/jimleeii/EndpointDefinition" commit="d3d7bac08c4a088dade41c01533d2693e06dee33" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0">
+        <frameworkReference name="Microsoft.AspNetCore.App" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+</package>
